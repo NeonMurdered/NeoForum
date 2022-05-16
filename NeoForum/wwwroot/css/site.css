@@ -1,0 +1,168 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+header {
+    background-color: black;
+}
+
+body {
+    margin-bottom: 60px;
+    background: url(../images/bg.jpg) center no-repeat;
+    background-size: cover;
+}
+
+.footer {
+    background-color: black;
+}
+
+a {
+    color: black;
+}
+
+p {
+    margin-top: 1rem;
+}
+
+.card {
+    border-radius: 10px;
+    border-color: blueviolet;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+}
+
+div.login-logout-tab div.card-header {
+    padding: 0px 0px 12px 0px;
+}
+
+div.login-logout-tab ul.nav-tabs {
+    margin: 0px 0px -12px 0px;
+}
+
+div.login-logout-tab li.nav-item {
+    width: 50%;
+}
+
+div.login-logout-tab a.nav-link {
+    font-size: 25px;
+    color: black;
+    text-align: center;
+}
+
+div.card-content {
+    padding: 10px 20px;
+}
+
+div.login-form-icon {
+    text-align: center;
+}
+
+.form-floating {
+    margin-bottom: 15px;    
+}
+
+.form-control {
+    background-color: blueviolet;
+    border: 1px solid #0d6efd;
+    opacity: 0.8;
+
+    transition: background-color 0.5s linear;
+}
+
+.form-control:focus {
+    color: black;
+    background-color: #ac45cf;
+}
+
+.w-100 {
+    background-color: blueviolet;
+    color: black;
+    transition: background-color 1s linear;
+}
+
+.btn-primary:hover {
+    color: black;
+    background-color: #ac45cf;
+}
+
+.nav-tabs .nav-link.active {
+    border-color: blueviolet;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    color: blueviolet;
+}
+
+.nav-tabs .nav-link {
+    transition: border-color 0.5s linear;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: blueviolet;
+}
+
+.navbar-light .navbar-brand{
+    color: blueviolet;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: blueviolet;
+    transition: color 1s linear;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: violet;
+}
+
+.navbar-brand {
+    margin-right: 1.50em;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: blueviolet;
+}
+
+.navbar-light .navbar-toggler {
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+
+.navbar-light .navbar-toggler-icon {
+    fill: blueviolet;
+}
+
+.footer__text {
+    text-align: center;
+    color: blueviolet;
+}
+
+div.login-form-icon {
+    margin-bottom: 15px;
+}
+
+.fas {
+    color: blueviolet;
+}
+
+.form-label {
+    color: black;
+    font-weight: 500;
+}
+
+.form-check-input {
+    background-color: blueviolet;
+}
+
+.form-check-input:checked {
+    background-color: #ac45cf;
+}
