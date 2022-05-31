@@ -7,12 +7,15 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)</a>
+    <li class="nav-item" style="display: flex;">
+        <div class="login-form-icon-partial">
+            <i class="fas fa-user-circle fa-2x"></i>
+        </div>
+        <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@UserManager.GetUserName(User)</a>
     </li>
     <li class="nav-item">
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit" class="nav-link btn btn-link">Выйти</button>
+            <button id="logout" type="submit" class="nav-link btn btn-link"><i class="fa fa-sign-out" aria-hidden="true"></i>Выйти</button>
         </form>
     </li>
 }

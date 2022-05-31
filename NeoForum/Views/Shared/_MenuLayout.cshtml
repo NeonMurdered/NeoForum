@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using NeoForum.Areas.Identity.Data
+
+@inject SignInManager<NeoForumUser> SignInManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+       <a href="~/Home/Index" class="nav-link"><i class="fa fa-book" aria-hidden="true"></i>Статьи</a>
+    </li>
+
+    @if(User.IsInRole("Admin"))
+    {
+       <li class="nav-item">
+           <a href="~/Role/Index" class="nav-link"><i class="fa fa-cog" aria-hidden="true"></i>Управление</a>
+       </li>
+    }
+}
+</ul>

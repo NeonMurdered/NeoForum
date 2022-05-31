@@ -1,26 +1,47 @@
 ﻿@page
+@using NeoForum.Models.Enums
 @model IndexModel
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
-<h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
         <form id="profile-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <input asp-for="Username" class="form-control" disabled />
-                <label asp-for="Username" class="form-label"></label>
+                <input asp-for="Input.UserName" class="form-control"/>
+                <label asp-for="Input.UserName" class="form-label"></label>
             </div>
             <div class="form-floating">
-                <input asp-for="Input.PhoneNumber" class="form-control" />
-                <label asp-for="Input.PhoneNumber" class="form-label"></label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                <input asp-for="Input.FirstName" class="form-control"/>
+                <label asp-for="Input.FirstName" class="form-label"></label>
             </div>
-            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+            <div class="form-floating">
+                <input asp-for="Input.LastName" class="form-control"/>
+                <label asp-for="Input.LastName" class="form-label"></label>
+            </div> 
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control"/>
+                <label asp-for="Input.Email" class="form-label"></label>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Age" class="form-control"/>
+                <label asp-for="Input.Age" class="form-label"></label>
+            </div>
+            <div class="form-floating">
+                <select asp-for="Input.Country" asp-items="@new SelectList(Enum.GetNames(typeof(Country)))" class="form-control">
+                    <option selected disabled value="Select">Выберите Страну</option>
+                </select>
+                <label asp-for="Input.Country" class="form-label"></label>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.PhoneNumber" class="form-control"/>
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Сохранить</button>
         </form>
     </div>
 </div>

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NeoForum.Areas.Identity.Data;
 using NeoForum.Data;
+using NeoForum.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("NeoForumDbContextConnection") ?? throw new InvalidOperationException("Connection string 'NeoForumDbContextConnection' not found.");
@@ -9,8 +10,11 @@ var connectionString = builder.Configuration.GetConnectionString("NeoForumDbCont
 builder.Services.AddDbContext<NeoForumDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<NeoForumUser>(options => { options.SignIn.RequireConfirmedAccount = false; options.Password.RequireUppercase = false; })
+builder.Services.AddDefaultIdentity<NeoForumUser>(options => { options.SignIn.RequireConfirmedAccount = false; options.Password.RequireUppercase = false; options.Password.RequireNonAlphanumeric = false; })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<NeoForumDbContext>();
+
+builder.Services.AddSignalR();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -39,4 +43,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+app.MapHub<ChatHub>("/Home/Index");
 app.Run();

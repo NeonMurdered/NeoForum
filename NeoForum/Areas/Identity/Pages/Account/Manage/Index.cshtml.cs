@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NeoForum.Areas.Identity.Data;
+using NeoForum.Models.Enums;
 
 namespace NeoForum.Areas.Identity.Pages.Account.Manage
 {
@@ -56,22 +57,39 @@ namespace NeoForum.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Имя")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Фамилия")]
+            public string LastName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Имя пользователя")]
+            public string UserName { get; set; }
+
+            [Required]
+            [EmailAddress(ErrorMessage = "Неверный формат почты")]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
+
+            [Required]
+            [Display(Name = "Страна")]
+            public Country Country { get; set; }
+
+            [Required]
+            [Range(14, 80, ErrorMessage = "Недопустимый возраст")]
+            [Display(Name = "Возраст")]
+            public int Age { get; set; }
+
+            [Required]
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Номер телефона")]
             public string PhoneNumber { get; set; }
-        }
-
-        private async Task LoadAsync(NeoForumUser user)
-        {
-            var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
-            Username = userName;
-
-            Input = new InputModel
-            {
-                PhoneNumber = phoneNumber
-            };
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -82,7 +100,21 @@ namespace NeoForum.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            await LoadAsync(user);
+            var userName = await _userManager.GetUserNameAsync(user);
+
+            Username = userName;
+
+            Input = new InputModel
+            {
+                UserName = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Country = user.Country,
+                Age = user.Age,
+                PhoneNumber = user.PhoneNumber
+            };
+
             return Page();
         }
 
@@ -96,23 +128,48 @@ namespace NeoForum.Areas.Identity.Pages.Account.Manage
 
             if (!ModelState.IsValid)
             {
-                await LoadAsync(user);
                 return Page();
             }
 
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
+            if (Input.UserName != user.UserName)
             {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
-                {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
-                    return RedirectToPage();
-                }
+                user.UserName = Input.UserName;
             }
 
+            if (Input.FirstName != user.FirstName)
+            {
+                user.FirstName = Input.FirstName;
+            }
+
+            if (Input.LastName != user.LastName)
+            {
+                user.LastName = Input.LastName;
+            }
+
+            if (Input.Email != user.Email)
+            {
+                user.Email = Input.Email;
+            }
+
+            if (Input.Age != user.Age)
+            {
+                user.Age = Input.Age;
+            }
+
+            if (Input.Country != user.Country)
+            {
+                user.Country = Input.Country;
+            }
+
+            if (Input.PhoneNumber != user.PhoneNumber)
+            {
+                user.PhoneNumber = Input.PhoneNumber;
+            }
+
+            await _userManager.UpdateAsync(user);
+
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Ваш профиль обновлён";
             return RedirectToPage();
         }
     }

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using NeoForum.Areas.Identity.Data;
+using NeoForum.Models.Enums;
 
 namespace NeoForum.Areas.Identity.Pages.Account
 {
@@ -76,31 +77,41 @@ namespace NeoForum.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             /// 
-            [Required]
+            [Required(ErrorMessage = "Имя не указано")]
             [DataType(DataType.Text)]
             [Display(Name = "Имя")]
             public string FirstName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Фамилия не указана")]
             [DataType(DataType.Text)]
             [Display(Name = "Фамилия")]
             public string LastName { get; set; }
 
-            [Required]
-            [DataType(DataType.Text)]
-            [Display(Name = "Псевдоним")]
-            public string NickName { get; set; }
-
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Адрес почты не указан")]
+            [EmailAddress (ErrorMessage = "Неверный формат почты")]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required(ErrorMessage = "Имя пользователя не указано")]
+            [DataType(DataType.Text)]
+            [StringLength(15, MinimumLength = 3, ErrorMessage = "Длина имени должна быть от 3 до 15 символов")]
+            [Display(Name = "Имя пользователя")]
+            public string UserName { get; set; }
+
+            [Required(ErrorMessage = "Страна не указана")]
+            [Display(Name = "Страна")]
+            public Country Country { get; set; }
+
+            [Required(ErrorMessage = "Возраст не указан")]
+            [Range(14, 80, ErrorMessage = "Недопустимый возраст")]
+            [Display(Name = "Возраст")]
+            public int Age { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Пароль не указан")]
             [StringLength(100, ErrorMessage = "{0} должно быть, по крайней мере {2} и максимально {1} символов...", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Пароль")]
@@ -139,8 +150,9 @@ namespace NeoForum.Areas.Identity.Pages.Account
                 {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    NickName = Input.NickName,
-                    UserName = Input.Email,
+                    UserName = Input.UserName,
+                    Country = Input.Country,
+                    Age = Input.Age,
                     Email = Input.Email
                 };
 

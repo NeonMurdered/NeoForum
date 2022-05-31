@@ -91,9 +91,18 @@ div.login-form-icon {
     transition: background-color 1s linear;
 }
 
+.btn-primary {
+    color: black;
+    background-color: #ac45cf;
+}
+
 .btn-primary:hover {
     color: black;
     background-color: #ac45cf;
+}
+
+.btn-danger:hover {
+    color: black;
 }
 
 .nav-tabs .nav-link.active {
@@ -111,8 +120,23 @@ div.login-form-icon {
     border-color: blueviolet;
 }
 
-.navbar-light .navbar-brand{
-    color: blueviolet;
+.navbar-light .navbar-brand {
+    color: violet;
+    text-shadow:
+    /* glow */
+    0 0 7px #8a2be2, 
+    0 0 10px #8a2be2,
+    0 0 21px #8a2be2,
+    /* glow */
+    0 0 42px #0000ff, 
+    0 0 82px #0000ff, 
+    0 0 92px #0000ff, 
+    0 0 102px #0000ff, 
+    0 0 151px #0000ff;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: violet;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -128,10 +152,6 @@ div.login-form-icon {
     margin-right: 1.50em;
 }
 
-.navbar-light .navbar-brand:hover {
-    color: blueviolet;
-}
-
 .navbar-light .navbar-toggler {
     border: 1px solid blueviolet;
     color: blueviolet;
@@ -144,6 +164,7 @@ div.login-form-icon {
 .footer__text {
     text-align: center;
     color: blueviolet;
+    line-height: 20px;
 }
 
 div.login-form-icon {
@@ -165,4 +186,178 @@ div.login-form-icon {
 
 .form-check-input:checked {
     background-color: #ac45cf;
+}
+
+.alert-warning {
+    color: orange;
+    background-color: blueviolet;
+    border-color: orange;
+}
+
+.alert-success {
+    color: black;
+    background-color: green;
+    border-color: black;
+}
+
+p, strong {
+    color: orange;
+}
+
+h2 {
+    color: blueviolet;
+}
+
+.nav-pills .nav-link {
+    color: blueviolet;
+}
+
+.nav-pills .nav-link.active {
+    color: blueviolet;
+    background: url(../images/bgd.png) center no-repeat;
+}
+
+div.login-form-icon-partial {
+    margin-bottom: 0px;
+    margin-top: 4px;
+    margin-right: 5px;
+}
+
+.jumbotron {
+    margin: 0 auto;
+    max-width: 600px;
+    max-height: 393px;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+    overflow-y: scroll;
+}
+
+.container__name__time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+p {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+.bg__default {
+    border: 2px solid blueviolet;
+    background-color: none;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+}
+
+.bg__primary {
+    border: 2px solid blueviolet;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+}
+
+.form-group {
+    display: flex;
+}
+
+.btn-outline {
+    color: black;
+    border-color: none;
+    transition: color 0.5s linear;
+}
+
+.btn:hover {
+    color: violet;
+}
+
+.row {
+    margin-right: 0;
+}
+
+.row>* {
+    padding-right: 0;
+}
+
+#chatinner::-webkit-scrollbar {
+    width: 14px;
+    border-radius: 5px;
+    background-color: blueviolet;
+}
+
+#chatinner::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: black;
+}
+
+#stiky {
+    position: sticky;
+    bottom: 0;
+    background-color: blueviolet;
+}
+
+#messageText {
+    border-color: violet;
+}
+
+th {
+    color: blueviolet;
+}
+
+tr {
+    color: blueviolet;
+    
+}
+
+tbody {
+    border-color: blueviolet;
+}
+
+.btn-secondary {
+    margin-bottom: 10px;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    color: blueviolet;
+    border-color: blueviolet;
+    transition: color 0.5s linear;
+    transition: border-color 0.5s linear;
+}
+
+.btn-secondary:hover {
+    color: violet;
+    border-color: violet;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+}
+
+label {
+    color: blueviolet;
+    margin-right: 10px;
+}
+
+
+
+@media screen and (max-width: 800px) {
+
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    table td {
+        display: block;
+        text-align: right;
+    }
+
+    table td:before {
+        content: attr(aria-label);
+        float: left;
+        font-weight: bold;
+    }
 }
