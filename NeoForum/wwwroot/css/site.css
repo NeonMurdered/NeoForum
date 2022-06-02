@@ -223,17 +223,6 @@ div.login-form-icon-partial {
     margin-right: 5px;
 }
 
-.jumbotron {
-    margin: 0 auto;
-    max-width: 600px;
-    max-height: 393px;
-    background: url(../images/bgd.png) center no-repeat;
-    background-size: cover;
-    border-radius: 10px;
-    border: 1px solid blueviolet;
-    overflow-y: scroll;
-}
-
 .container__name__time {
     display: flex;
     justify-content: space-between;
@@ -279,6 +268,15 @@ p {
 
 .row>* {
     padding-right: 0;
+}
+
+#chatinner {
+    max-height: 393px;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+    overflow-y: scroll;
 }
 
 #chatinner::-webkit-scrollbar {
@@ -337,10 +335,52 @@ label {
     margin-right: 10px;
 }
 
+.main__inner {
+    display: flex;
+}
 
+#discordinvite {
+    height: 600px;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+}
+
+#newarticles {
+    height: 600px;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+}
+
+.main__item {
+    width: 33%;
+    margin: 0 10px;
+}
+
+.main__title {
+    text-align: center;
+    color: violet;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+}
+
+@media screen and (max-width: 1200px) {
+    .main__inner {
+        display: block;
+    }
+
+    .main__item {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
 
 @media screen and (max-width: 800px) {
-
     table thead {
         display: none;
     }
