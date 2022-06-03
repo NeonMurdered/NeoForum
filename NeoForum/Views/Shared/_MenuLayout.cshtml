@@ -7,7 +7,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-       <a href="~/Home/Index" class="nav-link"><i class="fa fa-book" aria-hidden="true"></i>Статьи</a>
+       <a href="~/Articles/Index" class="nav-link"><i class="fa fa-book" aria-hidden="true"></i>Статьи</a>
     </li>
 
     @if(User.IsInRole("Admin"))

@@ -25,4 +25,6 @@ public class NeoForumDbContext : IdentityDbContext<NeoForumUser>
     }
 
     public DbSet<Message>? Messages { get; set; }
+
+    public DbSet<Article>? Articles { get; set; }
 }

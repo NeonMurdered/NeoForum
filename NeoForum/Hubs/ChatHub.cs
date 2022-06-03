@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
+using NeoForum.Areas.Identity.Data;
 using NeoForum.Models;
 
 namespace NeoForum.Hubs

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NeoForum.Data;
 
@@ -11,9 +12,10 @@ using NeoForum.Data;
 namespace NeoForum.Migrations
 {
     [DbContext(typeof(NeoForumDbContext))]
-    partial class NeoForumDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220602130736_Init Art")]
+    partial class InitArt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,6 +189,9 @@ namespace NeoForum.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(100)");
 
@@ -212,9 +217,6 @@ namespace NeoForum.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<byte[]>("ProfilePicture")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -247,13 +249,6 @@ namespace NeoForum.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Categories")
-                        .HasColumnType("int");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -262,10 +257,19 @@ namespace NeoForum.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("When")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("Articles");
                 });
@@ -350,6 +354,15 @@ namespace NeoForum.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("NeoForum.Models.Article", b =>
+                {
+                    b.HasOne("NeoForum.Areas.Identity.Data.NeoForumUser", "Sender")
+                        .WithMany("Articles")
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("Sender");
+                });
+
             modelBuilder.Entity("NeoForum.Models.Message", b =>
                 {
                     b.HasOne("NeoForum.Areas.Identity.Data.NeoForumUser", "Sender")
@@ -361,6 +374,8 @@ namespace NeoForum.Migrations
 
             modelBuilder.Entity("NeoForum.Areas.Identity.Data.NeoForumUser", b =>
                 {
+                    b.Navigation("Articles");
+
                     b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618

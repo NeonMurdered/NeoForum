@@ -229,7 +229,6 @@ div.login-form-icon-partial {
     align-items: center;
 }
 
-
 p {
     margin-top: 0rem;
     margin-bottom: 0rem;
@@ -238,8 +237,6 @@ p {
 .bg__default {
     border: 2px solid blueviolet;
     background-color: none;
-    background: url(../images/bgd.png) center no-repeat;
-    background-size: cover;
 }
 
 .bg__primary {
@@ -287,7 +284,7 @@ p {
 
 #chatinner::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: black;
+    background-color: rebeccapurple;
 }
 
 #stiky {
@@ -367,6 +364,23 @@ label {
     background-size: cover;
     border-radius: 10px;
     border: 1px solid blueviolet;
+}
+
+.txta {
+    resize: none;
+    margin: 10px 0;
+}
+
+.txta::-webkit-scrollbar {
+    width: 14px;
+    border-radius: 5px;
+    background-color: blueviolet;
+}
+
+.txta::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
 }
 
 @media screen and (max-width: 1200px) {

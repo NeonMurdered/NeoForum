@@ -90,6 +90,9 @@ namespace NeoForum.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Номер телефона")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "Изображение профиля")]
+            public byte[] ProfilePicture { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -112,7 +115,8 @@ namespace NeoForum.Areas.Identity.Pages.Account.Manage
                 Email = user.Email,
                 Country = user.Country,
                 Age = user.Age,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                ProfilePicture = user.ProfilePicture
             };
 
             return Page();
@@ -164,6 +168,16 @@ namespace NeoForum.Areas.Identity.Pages.Account.Manage
             if (Input.PhoneNumber != user.PhoneNumber)
             {
                 user.PhoneNumber = Input.PhoneNumber;
+            }
+
+            if (Request.Form.Files.Count > 0)
+            {
+                IFormFile file = Request.Form.Files.FirstOrDefault();
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    user.ProfilePicture = dataStream.ToArray();
+                }
             }
 
             await _userManager.UpdateAsync(user);

@@ -7,10 +7,13 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
+    <li class="nav-item" style="align-self: center;">
+        @if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
+        {
+            <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
+        }
+    </li>
     <li class="nav-item" style="display: flex;">
-        <div class="login-form-icon-partial">
-            <i class="fas fa-user-circle fa-2x"></i>
-        </div>
         <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@UserManager.GetUserName(User)</a>
     </li>
     <li class="nav-item">

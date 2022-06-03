@@ -27,9 +27,7 @@ public class NeoForumUser : IdentityUser
     [Column(TypeName = "nvarchar(100)")]
     public string? LastName { get; set; } 
 
-    [PersonalData]
-    [Column(TypeName = "nvarchar(100)")]
-    public string? Image { get; set; }
+    public byte[]? ProfilePicture { get; set; }
 
     public Country Country { get; set; }
 
