@@ -100,6 +100,7 @@ namespace NeoForum.Controllers
             {
                 try
                 {
+                    article.When = DateTime.Now;
                     _context.Update(article);
                     await _context.SaveChangesAsync();
                 }

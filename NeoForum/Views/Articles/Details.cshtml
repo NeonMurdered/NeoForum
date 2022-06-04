@@ -5,45 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h2 class="section-title">Обзор</h2>
 
-<div>
-    <h4>Article</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Categories)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Categories)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Text)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.When)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.When)
-        </dd>
-    </dl>
+<div class="articles-list">
+    <div>
+        <h2 class="section-title">@Html.DisplayFor(model => model.Title)</h2>
+        <p>@Html.DisplayNameFor(model => model.Categories):</p>
+        <p>@Html.DisplayFor(model => model.Categories)</p>
+        <textarea class="txta" style="resize:none; min-height:300px; width:100%;" disabled>@Html.DisplayFor(model => model.Text)</textarea>
+        <div class="container__name__time__details">
+            <div>
+                <p>@Html.DisplayNameFor(model => model.Author):</p>
+                <p>@Html.DisplayFor(model => model.Author)</p>
+            </div>
+            <p>Дата написания: @Html.DisplayFor(model => model.When)</p>   
+        </div>
+    </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if(User.IsInRole("Admin"))
+    {
+       <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Изменить</a>
+    }
+    <a asp-action="Index" class="btn btn-primary">Назад</a>
 </div>

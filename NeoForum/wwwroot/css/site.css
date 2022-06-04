@@ -33,6 +33,7 @@ a {
 
 p {
     margin-top: 1rem;
+    color: #cbace9;
 }
 
 .card {
@@ -200,10 +201,6 @@ div.login-form-icon {
     border-color: black;
 }
 
-p, strong {
-    color: orange;
-}
-
 h2 {
     color: blueviolet;
 }
@@ -298,11 +295,11 @@ p {
 }
 
 th {
-    color: blueviolet;
+    color: violet;
 }
 
 tr {
-    color: blueviolet;
+    color: violet;
     
 }
 
@@ -381,6 +378,67 @@ label {
     border-radius: 5px;
     background: url(../images/bgd.png) center no-repeat;
     background-size: cover;
+}
+
+.cancel-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.articles-list {
+    margin: 10px 0;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+}
+
+.articles-list-item {
+    border-radius: 10px;
+    border: 1px solid blueviolet;    
+}
+
+.articles-link {
+    color: violet;
+    transition: color 0.5s linear
+}
+
+.articles-link:hover {
+    color: blueviolet;
+}
+
+.articles-text {
+    color: violet;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.articles-text-time {
+    color: lightgray;
+}
+
+.section-title {
+    text-align: center;
+}
+
+.container__name__time__details {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+textarea:disabled {
+    color: black;
+    border: 1px solid blueviolet;
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+}
+
+.form-search::-webkit-input-placeholder {
+    color: violet;
 }
 
 @media screen and (max-width: 1200px) {

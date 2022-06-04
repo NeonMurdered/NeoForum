@@ -1,53 +1,50 @@
-﻿@model NeoForum.Models.Article
+﻿@using NeoForum.Models.Enums
+@model NeoForum.Models.Article
 
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h2>Редактирование статьи</h2>
 
-<h4>Article</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+            <div class="form-floating">
                 <input asp-for="Title" class="form-control" />
+                <label asp-for="Title" class="form-label"></label>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Categories" class="control-label"></label>
-                <select asp-for="Categories" class="form-control"></select>
+            <div class="form-floating">
+                <select asp-for="Categories" asp-items="@new SelectList(Enum.GetNames(typeof(Categories)))" class="form-control">
+                    <option selected disabled value="Select">Выберите категорию</option>
+                </select>
+                <label asp-for="Categories" class="form-label"></label>
                 <span asp-validation-for="Categories" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <input asp-for="Text" class="form-control" />
+            <div class="form-floating">
+                <textarea asp-for="Text" class="form-control txta" style="min-height:200px;"></textarea>
+                <label asp-for="Text" class="form-label"></label>
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
+            <div class="form-floating">                
                 <input asp-for="Author" class="form-control" />
+                <label asp-for="Author" class="form-label"></label>
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="When" class="control-label"></label>
-                <input asp-for="When" class="form-control" />
-                <span asp-validation-for="When" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group cancel-form">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Назад</a>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
 
 @section Scripts {

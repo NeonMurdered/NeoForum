@@ -1,0 +1,82 @@
+﻿@model IEnumerable<NeoForum.Models.Message>
+
+@{
+    ViewData["Title"] = "Index";
+    var userName = User.Identity.Name;
+}
+
+<div class="main__inner">
+    <div class="main__item">
+        <h2 class="main__title">Чат</h2>
+        <div class="item__inner" id="chatinner">
+            <div class="row">
+               <div class="col-md-12" id="chat">
+                 @if (Model != null)
+                 {
+                     @foreach (var message in Model.OrderBy(m => m.When))
+                     {
+                         string containerClass, timePosition, textAlign, contcolor, offset;
+                         if (userName == message.UserName)
+                         {
+                             containerClass = "container";
+                             timePosition = "time-left text-gray";
+                             textAlign = "text-left text-white";
+                             contcolor = "bg__primary";
+                             offset = "";
+                         }
+                         else
+                         {
+                             containerClass = "container";
+                             timePosition = "time-left text-gray";
+                             textAlign = "text-left text-white";
+                             contcolor = "bg__default";
+                             offset = "";
+                         }
+                 
+                         <div class="row">
+                             <div class="@offset">
+                                 <div class="@containerClass @contcolor">
+                                         <div class="container__name__time">
+                                             <p class="sender @textAlign">@message.UserName</p>
+                                             <span class="@timePosition">@message.When.ToString("dd/MM/yyyy HH:mm")</span>
+                                         </div>
+                                         <p class="@textAlign">@message.Text</p>
+                                 </div>
+                             </div>
+                         </div>
+                     }
+                 }
+               </div>
+               <div class="col-md-12" id="stiky">
+                 <form asp-action="Create"
+                       data-ajax-begin="clearInputField" data-ajax-complete=""
+                       data-ajax-failure="alert('Fail')" data-ajax-success="sendMessage"
+                       data-ajax="true" data-ajax-method="POST">
+                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                     <div class="form-group">
+                         <input type="submit" value="Отправить" id="submitButton" class="btn btn-outline btn-block" />
+                         <input name="Text" class="form-control" id="messageText" />
+                     </div>
+                     <input type="hidden" value="@userName" name="username" />
+                 </form>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        const userName = "@ViewBag.CurrentUserName";
+    </script>
+}
+
+@section scripts {
+    <script src="~/signalr/signalr.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/js/chat.js"></script>
+    <script src="~/js/signalrReqHandler.js"></script>
+}
+
+

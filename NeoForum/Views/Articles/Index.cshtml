@@ -5,56 +5,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Статьи</h2>
-
-<p>
-    <a asp-action="Create">Создать новую</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Categories)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Text)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.When)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categories)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.When)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+<h2 class="section-title">Статьи</h2>
+@if(User.IsInRole("Admin"))
+{
+    <p>
+       <a asp-action="Create" class="btn btn-sm btn-primary">Создать новую статью</a>
+    </p>
 }
-    </tbody>
-</table>
+
+<div class="articles-list">
+    <div>
+    @foreach (var item in Model) 
+    {
+        <div class="container articles-list-item">
+            <div class="container__name__time">
+                <a asp-action="Details" asp-route-id="@item.Id" class="articles-link">@Html.DisplayFor(modelItem => item.Title)</a>
+                <p class="articles-text-time">@Html.DisplayFor(modelItem => item.When)</p>
+            </div>
+            <p class="articles-text">@Html.DisplayFor(modelItem => item.Text)</p>
+            @if(User.IsInRole("Admin"))
+            {
+               <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Изменить</a>
+               <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Удалить</a>
+            } 
+        </div>
+    }       
+    </div>   
+</div>
