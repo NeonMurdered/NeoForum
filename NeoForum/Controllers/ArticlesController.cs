@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NeoForum.Areas.Identity.Data;
 using NeoForum.Data;
 using NeoForum.Models;
 
@@ -13,6 +15,8 @@ namespace NeoForum.Controllers
     public class ArticlesController : Controller
     {
         private readonly NeoForumDbContext _context;
+        private readonly ILogger<ArticlesController> _logger;
+        public readonly UserManager<NeoForumUser> _userManager;
 
         public ArticlesController(NeoForumDbContext context)
         {

@@ -16,7 +16,6 @@ public class NeoForumUser : IdentityUser
     {
         Messages = new HashSet<Message>();
     }
-
     public virtual ICollection<Message> Messages { get; set; }
 
     [PersonalData]

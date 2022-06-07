@@ -1,13 +1,14 @@
-﻿@model IEnumerable<NeoForum.Models.Message>
+﻿
+@model IEnumerable<NeoForum.Models.Message>
 
 @{
     ViewData["Title"] = "Index";
     var userName = User.Identity.Name;
 }
 
-<div class="main__inner">
+<div class="chat__inner">
     <div class="main__item">
-        <h2 class="main__title">Чат</h2>
+        <h2 class="main__title">Общий чат</h2>
         <div class="item__inner" id="chatinner">
             <div class="row">
                <div class="col-md-12" id="chat">

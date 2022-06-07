@@ -16,8 +16,8 @@ const messagesQueue = [];
 document.getElementById('submitButton').addEventListener('click', () => {
     var currentdate = new Date();
     when.innerHTML =
-        (currentdate.getMonth() + 1) + "/"
-        + currentdate.getDate() + "/"
+        currentdate.getDate() + "."
+        + (currentdate.getMonth() + 1) + "."
         + currentdate.getFullYear() + " "
         + currentdate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
 });
@@ -40,25 +40,30 @@ function addMessageToChat(message) {
     let isCurrentUserMessage = message.userName === username;
 
     let container = document.createElement('div');
-    container.className = isCurrentUserMessage ? "container darker" : "container";
+    container.className = isCurrentUserMessage ? "container bg__primary" : "container bg__default";
+
+    let containernametime = document.createElement('div');
+    containernametime.className = "container__name__time";
 
     let sender = document.createElement('p');
     sender.className = "sender";
     sender.innerHTML = message.userName;
     let text = document.createElement('p');
+    text.className = "chatp";
     text.innerHTML = message.text;
 
     let when = document.createElement('span');
     when.className = isCurrentUserMessage ? "time-left" : "time-right";
     var currentdate = new Date();
-    when.innerHTML = 
-        (currentdate.getMonth() + 1) + "/"
-        + currentdate.getDate() + "/"
+    when.innerHTML =
+        currentdate.getDate() + "."
+        + (currentdate.getMonth() + 1) + "."
         + currentdate.getFullYear() + " "
         + currentdate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
 
-    container.appendChild(sender);
+    container.appendChild(containernametime);
+    containernametime.appendChild(sender);
+    containernametime.appendChild(when);
     container.appendChild(text);
-    container.appendChild(when);
     chat.appendChild(container);
 }

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor;
+using MudBlazor.Services;
 using NeoForum.Areas.Identity.Data;
 using NeoForum.Data;
 using NeoForum.Hubs;

@@ -56,7 +56,7 @@ div.login-logout-tab li.nav-item {
 }
 
 div.login-logout-tab a.nav-link {
-    font-size: 25px;
+    font-size: 23px;
     color: black;
     text-align: center;
 }
@@ -123,10 +123,19 @@ div.login-form-icon {
 
 .navbar-light .navbar-brand {
     color: violet;
+    font-family: 'Train One', cursive;
+    text-shadow:
+    /* glow */
+    0 0 7px #8a2be2, 0 0 10px #8a2be2, 0 0 21px #8a2be2,
+    /* glow */
+    0 0 42px #0000ff, 0 0 82px #0000ff, 0 0 92px #0000ff, 0 0 102px #0000ff, 0 0 151px #0000ff;
+}
+
+.username {
     text-shadow:
     /* glow */
     0 0 7px #8a2be2, 
-    0 0 10px #8a2be2,
+    0 0 10px #8a2be2, 
     0 0 21px #8a2be2,
     /* glow */
     0 0 42px #0000ff, 
@@ -134,6 +143,55 @@ div.login-form-icon {
     0 0 92px #0000ff, 
     0 0 102px #0000ff, 
     0 0 151px #0000ff;
+}
+
+.main-title {
+    margin-top: 40px;
+    font-size: 60px;
+    animation: neon 5s steps(1, start) infinite reverse;
+    font-family: 'Train One', cursive;
+}
+
+@keyframes neon {
+    0% {
+        color: #0b3960;
+        text-shadow: 0 0 7px #0b3960, 0 0 8px #0b3960;
+    }
+
+    80% {
+        color: violet;
+        text-shadow: 0 0 6px #8a2be2,0 0 10px #8a2be2,0 0 50px #79a7fc;
+    }
+
+    81% {
+        color: blueviolet;
+        text-shadow: 0 0 6px #8a2be2,0 0 10px #8a2be2,0 0 50px #79a7fc;
+    }
+
+    82% {
+        color: #0b3960;
+        text-shadow: 0 0 7px #0b3960, 0 0 8px #0b3960;
+    }
+
+    83% {
+        color: blueviolet;
+        text-shadow: 0 0 6px #8a2be2,0 0 10px #8a2be2,0 0 50px #79a7fc;
+    }
+
+    84% {
+        color: #0b3960;
+        text-shadow: 0 0 7px #0b3960, 0 0 8px #0b3960;
+    }
+
+    85% {
+        color: blueviolet;
+        text-shadow: 0 0 6px #8a2be2,0 0 10px #8a2be2,0 0 50px #79a7fc;
+    }
+
+    100% {
+        color: #0b3960;
+        text-shadow: 0 0 7px #0b3960,0 0 8px #0b3960;
+    }
 }
 
 .navbar-light .navbar-brand:hover {
@@ -330,7 +388,14 @@ label {
 }
 
 .main__inner {
-    display: flex;
+    margin: 0 auto;
+    font-size: 25px;
+    text-align: center;
+}
+
+.main__text {
+    margin-top: 10px;
+    color: violet;
 }
 
 #discordinvite {
@@ -350,8 +415,7 @@ label {
 }
 
 .main__item {
-    width: 33%;
-    margin: 0 10px;
+    margin: 0 auto;
 }
 
 .main__title {
@@ -387,15 +451,14 @@ label {
 
 .articles-list {
     margin: 10px 0;
+}
+
+.articles-list-item {
     background: url(../images/bgd.png) center no-repeat;
     background-size: cover;
     border-radius: 10px;
     border: 1px solid blueviolet;
-}
-
-.articles-list-item {
-    border-radius: 10px;
-    border: 1px solid blueviolet;    
+    margin: 10px 0;
 }
 
 .articles-link {
@@ -431,14 +494,47 @@ label {
 }
 
 textarea:disabled {
-    color: black;
+    color: #cbace9;
     border: 1px solid blueviolet;
     background: url(../images/bgd.png) center no-repeat;
     background-size: cover;
 }
 
+.manage-link {
+    font-size: 25px;
+    transition: color 0.5s linear;
+}
+
+.manage-link:hover {
+    color: violet;
+}
+
 .form-search::-webkit-input-placeholder {
     color: violet;
+}
+
+.nav-manage {
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+    align-content: center;
+    align-items: center;
+}
+
+.role-list {
+    background: url(../images/bgd.png) center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    border: 1px solid blueviolet;
+}
+
+.sender {
+    color: white;
+}
+
+.chatp {
+    color: white;
 }
 
 @media screen and (max-width: 1200px) {
